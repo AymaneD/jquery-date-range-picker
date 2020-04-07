@@ -1017,6 +1017,9 @@
             redraw: redrawDatePicker,
             getDatePicker: getDatePicker,
             resetMonthsView: resetMonthsView,
+            getDateRangePickerInstance: function() {
+              return opt;
+            },
             destroy: function() {
                 $(self).off('.datepicker');
                 $(self).data('dateRangePicker', '');
