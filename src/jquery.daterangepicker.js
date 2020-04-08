@@ -1200,6 +1200,8 @@
         opt.start = false;
         opt.end = false;
         box.find('.day.checked').removeClass('checked');
+        //daterangepicker-custom-css-event-checked
+        box.find('td.daterangepicker-custom-css-event-checked').removeClass('daterangepicker-custom-css-event-checked');
         opt.setValue.call(selfDom, valueName);
         checkSelectionValid();
         showSelectedInfo(true);
@@ -1456,6 +1458,16 @@
       box.find('.day.checked').removeClass('checked');
       box.find('.day.last-date-selected').removeClass('last-date-selected');
       box.find('.day.first-date-selected').removeClass('first-date-selected');
+
+      //daterangepicker-custom-css-event-checked
+      box.find('td.daterangepicker-custom-css-event-checked').removeClass('daterangepicker-custom-css-event-checked');
+      //daterangepicker-custom-css-event-last-date-selected
+      box.find('td.daterangepicker-custom-css-event-last-date-selected').removeClass('daterangepicker-custom-css-event-last-date-selected');
+      //daterangepicker-custom-css-event-first-date-selected
+      box.find('td.daterangepicker-custom-css-event-first-date-selected').removeClass('daterangepicker-custom-css-event-first-date-selected');
+
+
+      
       opt.setValue.call(selfDom, '');
       checkSelectionValid();
       showSelectedInfo();
@@ -1495,6 +1507,10 @@
       if (day.hasClass('invalid')) return;
       var time = day.attr('time');
       day.addClass('checked');
+      //daterangepicker-custom-css-event-checked
+      day.closest('td').addClass('daterangepicker-custom-css-event-checked');
+
+      
       if (opt.singleDate) {
         opt.start = time;
         opt.end = false;
@@ -1649,6 +1665,9 @@
         if (opt.singleDate) {
           box.find('.day.hovering').removeClass('hovering');
           day.addClass('hovering');
+          //daterangepicker-custom-css-event-hovering
+          box.find('td.daterangepicker-custom-css-event-hovering').removeClass('daterangepicker-custom-css-event-hovering');
+          day.closest('td').addClass('daterangepicker-custom-css-event-hovering');
         } else {
           box.find('.day').each(function() {
             var time = parseInt($(this).attr('time')),
@@ -1657,8 +1676,12 @@
 
             if (time == hoverTime) {
               $(this).addClass('hovering');
+              //daterangepicker-custom-css-event-hovering
+                $(this).closest('td').addClass('daterangepicker-custom-css-event-hovering');
             } else {
               $(this).removeClass('hovering');
+              //daterangepicker-custom-css-event-hovering
+                $(this).closest('td').removeClass('daterangepicker-custom-css-event-hovering');
             }
 
             if (
@@ -1669,8 +1692,12 @@
               )
             ) {
               $(this).addClass('hovering');
+              //daterangepicker-custom-css-event-hovering
+                $(this).closest('td').addClass('daterangepicker-custom-css-event-hovering');
             } else {
               $(this).removeClass('hovering');
+              //daterangepicker-custom-css-event-hovering
+                $(this).closest('td').removeClass('daterangepicker-custom-css-event-hovering');
             }
           });
 
@@ -1719,6 +1746,9 @@
 
     function clearHovering() {
       box.find('.day.hovering').removeClass('hovering');
+      //daterangepicker-custom-css-event-hovering
+
+        box.find('td.daterangepicker-custom-css-event-hovering').removeClass('daterangepicker-custom-css-event-hovering');
       box.find('.date-range-length-tip').hide();
     }
 
@@ -1778,11 +1808,17 @@
         opt.start = false;
         opt.end = false;
         box.find('.day').removeClass('checked');
+        //daterangepicker-custom-css-event-checked
+        box.find('td.daterangepicker-custom-css-event-checked').removeClass('daterangepicker-custom-css-event-checked');
+        
         box.find('.drp_top-bar').removeClass('normal').addClass('error').find('.error-top').html(translate('less-than').replace('%d', opt.maxDays));
       } else if (opt.minDays && days < opt.minDays) {
         opt.start = false;
         opt.end = false;
         box.find('.day').removeClass('checked');
+        //daterangepicker-custom-css-event-checked
+        box.find('td.daterangepicker-custom-css-event-checked').removeClass('daterangepicker-custom-css-event-checked');
+        
         box.find('.drp_top-bar').removeClass('normal').addClass('error').find('.error-top').html(translate('more-than').replace('%d', opt.minDays));
       } else {
         if (opt.start || opt.end)
@@ -1805,6 +1841,8 @@
           opt.start = false;
           opt.end = false;
           box.find('.day').removeClass('checked');
+          //daterangepicker-custom-css-event-checked
+          box.find('td.daterangepicker-custom-css-event-checked').removeClass('daterangepicker-custom-css-event-checked');
         }
       }
     }
@@ -1953,21 +1991,34 @@
           (opt.start && !opt.end && moment(start).format('YYYY-MM-DD') == moment(time).format('YYYY-MM-DD'))
         ) {
           $(this).addClass('checked');
+          //daterangepicker-custom-css-event-checked
+          $(this).closest('td').addClass('daterangepicker-custom-css-event-checked');
         } else {
           $(this).removeClass('checked');
+          //daterangepicker-custom-css-event-checked
+          $(this).closest('td').removeClass('daterangepicker-custom-css-event-checked');
         }
 
         //add first-date-selected class name to the first date selected
         if (opt.start && moment(start).format('YYYY-MM-DD') == moment(time).format('YYYY-MM-DD')) {
           $(this).addClass('first-date-selected');
+          //daterangepicker-custom-css-event-first-date-selected
+          $(this).closest('td').addClass('daterangepicker-custom-css-event-first-date-selected');
         } else {
           $(this).removeClass('first-date-selected');
+          //daterangepicker-custom-css-event-first-date-selected
+          $(this).closest('td').removeClass('daterangepicker-custom-css-event-first-date-selected');
         }
         //add last-date-selected
         if (opt.end && moment(end).format('YYYY-MM-DD') == moment(time).format('YYYY-MM-DD')) {
           $(this).addClass('last-date-selected');
+          //daterangepicker-custom-css-event-last-date-selected
+          $(this).closest('td').addClass('daterangepicker-custom-css-event-last-date-selected');
+          
         } else {
           $(this).removeClass('last-date-selected');
+          //daterangepicker-custom-css-event-last-date-selected
+          $(this).closest('td').removeClass('daterangepicker-custom-css-event-last-date-selected');
         }
       });
 
